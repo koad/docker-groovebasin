@@ -9,22 +9,18 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y python-software-properties && \
     apt-add-repository ppa:andrewrk/libgroove && \
     apt-add-repository ppa:chris-lea/node.js && \
-    apt-get update
-
-# Install build tools, libgroove, nodejs
-RUN apt-get -y install build-essential && \
+    apt-get update && \
+    apt-get -y install build-essential && \
     apt-get -y install libgroove-dev libgrooveplayer-dev \
     libgrooveloudness-dev libgroovefingerprinter-dev && \
-    apt-get -y install nodejs
-
-RUN npm -g install groovebasin
-
-# Remove stuff for building:
-RUN apt-get -y remove libgroove-dev libgrooveplayer-dev \
+    apt-get -y install nodejs && \
+    npm -g install groovebasin && \
+    apt-get -y remove libgroove-dev libgrooveplayer-dev \
     libgrooveloudness-dev libgroovefingerprinter-dev \
     manpages manpages-dev g++ gcc cpp make ucf \
     python-software-properties unattended-upgrades \
-    g++-4.6 gcc-4.6 cpp-4.6
+    g++-4.6 gcc-4.6 cpp-4.6 && \
+    apt-get clean
 
 RUN useradd -m groovebasin -G audio && \
     mkdir /music && touch /music/.dummy && \
