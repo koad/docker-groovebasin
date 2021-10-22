@@ -1,8 +1,5 @@
-# GrooveBasin image
-# ORIGINAL MAINTAINER Simon Morvan garphy@zone84.net
-# Modified to use stackbrew and remove supervisord
-# use stackbrew's super-small ubuntu
-FROM stackbrew/ubuntu:12.04
+# fuck this shit
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
