@@ -1,0 +1,15 @@
+version: "3"
+
+volumes:
+  groovebasin:
+    driver: local
+
+services:
+  groovebasin:
+    build: .
+    ports:
+      - "16242:16242"
+      - "6600:6600"
+    volumes:
+      - groovebasin:/music
+      - groovebasin:/groove
